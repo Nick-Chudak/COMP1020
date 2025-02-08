@@ -1,0 +1,3 @@
+T357;Winnipeg:10:00-10:30,Stonewall:11:00-11:30,Neepawa:13:00-13:30,Thompson:15:30-16:00,Churchill:20:00-20:30
+T468;Winnipeg:07:30-08:00,Steinbach:09:00-09:30,Brandon:10:30-11:00
+T579;Winnipeg:06:30-07:00,Selkirk:08:00-08:30,Virden:10:00-10:30,Swan River:12:00-12:30

@@ -1,0 +1,35 @@
+Train Name: T357
+Number of cars: 3
+Schedule:
+Destination: Churchill
+Stops:
+  1. Stop Name: Winnipeg, Arrival: 10:00, Departure: 10:30
+  2. Stop Name: Stonewall, Arrival: 11:00, Departure: 11:30
+  3. Stop Name: Neepawa, Arrival: 13:00, Departure: 13:30
+  4. Stop Name: Thompson, Arrival: 15:30, Departure: 16:00
+  5. Stop Name: Churchill, Arrival: 20:00, Departure: 20:30
+
+Car: 1
+Luggage Weight: 400kg
+| XX 02 XX 04 |
+| XX 06 07 08 |
+| XX 10 11 12 |
+| XX XX XX 16 |
+| XX 18 19 20 |
+
+Car: 2
+Luggage Weight: 1200kg
+| XX XX   03 04 |
+| XX XX   07 08 |
+| XX XX   11 12 |
+| XX XX   15 16 |
+| XX XX   19 20 |
+
+Car: 3
+Luggage Weight: 455500kg
+| XX 02 XX 04 |
+| XX 06 |
+| XX XX   XX |
+| XX 11 12 13 |
+
+

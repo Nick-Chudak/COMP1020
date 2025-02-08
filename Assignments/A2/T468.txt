@@ -1,0 +1,10 @@
+Train Name: T468
+Cars: 1
+
+Car: 1
+| X O   X O   X |
+| O O   X O     |
+| X O   W O   O |
+| X X   X O   O |
+| X O   X       |
+Luggage Weight: 420kg

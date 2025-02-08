@@ -1,0 +1,43 @@
+Train Name: T579
+Number of cars: 4
+Schedule:
+Destination: Swan River
+Stops:
+  1. Stop Name: Winnipeg, Arrival: 06:30, Departure: 07:00
+  2. Stop Name: Selkirk, Arrival: 08:00, Departure: 08:30
+  3. Stop Name: Virden, Arrival: 10:00, Departure: 10:30
+  4. Stop Name: Swan River, Arrival: 12:00, Departure: 12:30
+
+Car: 1
+Luggage Weight: 300kg
+| XX 02   03 XX |
+| 05    06 XX 08 XX |
+| XX 11 12 |
+| XX          14   15 16     XX |
+| 18 XX XX |
+
+Car: 2
+Luggage Weight: 720kg
+| XX XX XX XX 05 |
+| 06 07           XX XX |
+| 10     XX XX |
+| XX         XX XX 16 |
+| 17   XX XX |
+
+Car: 3
+Luggage Weight: 1000kg
+| 01     XX XX 04 05 |
+| XX     07 |
+| XX 09        10 XX XX XX |
+| XX    15                                XX 17 |
+| XX    19 XX |
+
+Car: 4
+Luggage Weight: 1150kg
+| XX  XX XX    04 05 |
+| XX    07 08 XX   XX |
+| XX XX       XX 14 |
+| XX    16 XX XX |
+| 19  XX    XX 22 23 |
+
+

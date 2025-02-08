@@ -1,0 +1,34 @@
+Train Name: T579
+Cars: 4
+
+Car: 1
+| X O   O X |
+| O    O X O X |
+| X O O |
+| X          O   O O     X |
+| O X X |
+Luggage Weight: 300kg
+
+Car: 2
+| X X X X O |
+| O O           X X |
+| O     X X |
+| X         X X O |
+| O   X X |
+Luggage Weight: 720kg
+
+Car: 3
+| O     X X O O |
+| X     O |
+| X O        O X X X |
+| X    O                                X O |
+| X    O X |
+Luggage Weight: 1000kg
+
+Car: 4
+| X  X X    O O |
+| X    O O X   X |
+| X X       X O |
+| X    O X X |
+| O  X    X O O |
+Luggage Weight: 1150kg

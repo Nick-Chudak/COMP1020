@@ -1,0 +1,25 @@
+Train Name: T357
+Cars: 3
+
+Car: 1
+| X O X O |
+| X O O O |
+| X O O O |
+| X X X O |
+| X O O O |
+Luggage Weight: 400kg
+
+Car: 2
+| X X   O O |
+| X X   O O |
+| X X   O O |
+| X X   O O |
+| X X   O O |
+Luggage Weight: 1200kg
+
+Car: 3
+| X O X O |
+| X O |
+| X X   X |
+| X O O O |
+Luggage Weight: 455500kg
