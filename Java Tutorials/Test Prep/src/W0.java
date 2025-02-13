@@ -1,0 +1,1 @@
+public class W0VariableScopes_Constants
