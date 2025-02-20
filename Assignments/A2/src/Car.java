@@ -1,3 +1,13 @@
+/**
+ * Name of class or program (matches filename)
+ *
+ * COMP 1020 SECTION A04
+ * INSTRUCTOR    Pouya Aghahoseini
+ * ASSIGNMENT    Assignment 2, question 2
+ * @author       Mykola Chudak, 8043157
+ * @version      2/20/2025
+ */
+
 public class Car {
     private int carNumber;
     private int luggageWeight;
@@ -5,91 +15,6 @@ public class Car {
     private String seatingLayout;
     
     private static final int LUGGAGE_PER_PASSENGER_KG = 25;
-
-
-    public static void main(String[] args) throws BadTrainException{
-        // Expected input: A string representation of the car
-        String carDescription = """
-        Car: 1
-        | O O O |
-        | O X O |
-        | O O O |
-        Luggage Weight: 50kg
-        """;
-        try {
-        // Create a Car object
-        Car car = new Car(carDescription);
-        // Initial car details
-        System.out.println(car);
-        /*
-        Expected Output:
-        Car: 1
-        Luggage Weight: 50kg
-        | 01 02 03 |
-        | 04 XX 06 |
-        | 07 08 09 |
-        */
-        // Reserve a seat (seat 3) with luggage weight 20kg
-        System.out.println(car.reserveSeat(3, 20));
-        /*
-        Expected Output:
-        0
-        */
-        // Car details after reserving seat 3
-        System.out.println(car);
-        /*
-        Expected Output:
-        Car: 1
-        Luggage Weight: 70kg
-        | 01 02 XX |
-        | 04 XX 06 |
-        | 07 08 09 |
-        */
-        // Attempt to reserve an already occupied seat (seat 5)
-        System.out.println(car.reserveSeat(5, 15));
-        // Expected Output:1
-        // Car details after attempting to reserve seat 5
-        System.out.println(car);
-        /*
-        Expected Output:
-        Car: 1
-        Luggage Weight: 70kg
-        | 01 02 XX |
-        | 04 XX 06 |
-        | 07 08 09 |
-        */
-        // Cancel the reservation for seat 3
-        car.cancelReservation(3);
-        System.out.println(car);
-        /*
-        Expected Output:
-        Car: 1
-        Luggage Weight: 70kg
-        | 01 02 03 |
-        | 04 XX 06 |
-        | 07 08 09 |
-        */
-
-        String layout1 = "| O X |\n| X O |";
-        String layout2 = "| O O |\n| X X |";
-        String layout3 = "| O O |\n| O O |";
-    
-        // Define seating lists (true for occupied 'X', false for available 'O')
-        boolean[] seatingList1 = { false, true, true, false };
-        boolean[] seatingList2 = { false, false, true, true };
-        boolean[] seatingList3 = { false, false, false, false };
-    
-        // Create Car objects
-        Car car1 = new Car(1, 100, seatingList1, layout1); // Car 1: 100kg luggage capacity
-        Car car2 = new Car(2, 80, seatingList2, layout2); // Car 2: 80kg luggage capacity
-        Car car3 = new Car(3, 120, seatingList3, layout3); // Car 3: 120kg luggage capacity
-        Car[] cars = { car1, car2, car3 };
-        } catch (IllegalArgumentException e) {
-        System.err.println("Error initializing the car: " + e.getMessage());
-        } catch (BadTrainException e) {
-        System.err.println("Error handling the car operations: " + e.getMessage());
-        }
-    }
 
     public Car(String carDescription) throws IllegalArgumentException {
         String[] lines = carDescription.split("\n");
@@ -196,7 +121,7 @@ public class Car {
     public boolean isSeatAvailable(int seatNumber) throws BadTrainException {
 
         if (seatNumber >= 1 && seatNumber <= seatingList.length) {
-            return this.seatingList[seatNumber - 1] == true;
+            return this.seatingList[seatNumber - 1] == false;
         } else {
             throw new BadTrainException("Invalid seat number: must be between 1 and\r\n" + //
                                 seatingList.length);
@@ -235,7 +160,7 @@ public class Car {
     }
 
     public boolean canAddLuggage(int luggageWeightToAdd) {
-        return (this.luggageWeight + luggageWeightToAdd) <= this.getMaxWeight(this.seatingList.length);
+        return (this.luggageWeight + luggageWeightToAdd) <= Car.getMaxWeight(this.seatingList.length);
     }
 
     public void addLuggage(int luggageWeightToAdd) {
@@ -248,15 +173,15 @@ public class Car {
     }
 
     public String toString() {
-        String seating = this.seatingLayout; // Create a copy to avoid modifying the original directly
+        String seating = this.seatingLayout;
         int index = 0;
-        String result = ""; // New string to store updated layout
+        String result = "";
     
         for (int i = 0; i < seating.length(); i++) {
             char currentChar = seating.charAt(i);
     
             if (currentChar == 'X') {
-                result += "XX"; // Replace 'X' with "XX"
+                result += "XX";
                 index++;
             } else if (currentChar == 'O') {
                 result += String.format("%02d", (index + 1)); // Replace 'O' with a seat number
@@ -266,7 +191,7 @@ public class Car {
             }
         }
     
-        return "Car: " + this.carNumber + "\n" + "Luggage Weight: " + this.luggageWeight + "\n" + result;
+        return "Car: " + this.carNumber + "\n" + "Luggage Weight: " + this.luggageWeight + "kg" + "\n" + result;
     }
 
     public static int getMaxWeight(int capacity) {

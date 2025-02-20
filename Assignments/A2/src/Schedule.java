@@ -1,117 +1,68 @@
+/**
+ * Name of class or program (matches filename)
+ *
+ * COMP 1020 SECTION A04
+ * INSTRUCTOR    Pouya Aghahoseini
+ * ASSIGNMENT    Assignment 2, question 3
+ * @author       Mykola Chudak, 8043157
+ * @version      2/20/2025
+ */
+
 public class Schedule {
     private Stop[] stops;
     private String destination;
 
-    public static void main(String[] args) throws BadScheduleException{
-        // Stop stop1 = new Stop("Station A", "08:00", "08:15");
-        // Stop stop2 = new Stop("Station B", "09:00", "09:15");
-        // Stop stop3 = new Stop("Station C", "10:00", "10:15");
-        // // Initialize Schedule with stops
-        // Stop[] stops = { stop1, stop2, stop3 };
-        // Schedule schedule = new Schedule(stops);
-        
-        // System.out.println(schedule.stops.length);
-        // schedule.removeStop(3);
-        
-        // System.out.println(schedule.stops.length);
-        // System.out.println(schedule.stops[0]);
-
-        try {
-            // Create Stop objects
-            Stop stop1 = new Stop("Station A", "08:00", "08:15");
-            Stop stop2 = new Stop("Station B", "09:00", "09:15");
-            Stop stop3 = new Stop("Station C", "10:00", "10:15");
-            // Initialize Schedule with stops
-            Stop[] stops = { stop1, stop2, stop3 };
-            Schedule schedule = new Schedule(stops);
-            // Print initial schedule
-            System.out.println("Initial Schedule:");
-            System.out.println(schedule);
-            /*
-            * Expected output:
-            * Schedule:
-            * Destination: Station C
-            * Stops:
-            * 1. Stop Name: Station A, Arrival: 08:00, Departure: 08:15
-            * 2. Stop Name: Station B, Arrival: 09:00, Departure: 09:15
-            * 3. Stop Name: Station C, Arrival: 10:00, Departure: 10:15
-            */
-            // Add a new stop
-            Stop stop4 = new Stop("Station D", "11:00", "11:15");
-            schedule.addStop(stop4);
-            System.out.println("\nAfter Adding Stop D:");
-            System.out.println(schedule);
-            /*
-            * Expected output:
-            * Success: Stop added.
-            * Schedule:
-            * Destination: Station D
-            * Stops:
-            * 1. Stop Name: Station A, Arrival: 08:00, Departure: 08:15
-            * 2. Stop Name: Station B, Arrival: 09:00, Departure: 09:15
-            * 3. Stop Name: Station C, Arrival: 10:00, Departure: 10:15
-            * 4. Stop Name: Station D, Arrival: 11:00, Departure: 11:15
-            */
-            // Remove a stop
-            schedule.removeStop(2); // Remove Station B
-            System.out.println("\nAfter Removing Stop B:");
-            System.out.println(schedule);
-            /*
-            * Expected output:
-            * Success: Stop removed.
-            * Schedule:
-            * Destination: Station D
-            * Stops:
-            * 1. Stop Name: Station A, Arrival: 08:00, Departure: 08:15
-            * 2. Stop Name: Station C, Arrival: 10:00, Departure: 10:15
-            * 3. Stop Name: Station D, Arrival: 11:00, Departure: 11:15
-            */
-            // Invalid operations
-            try {
-                schedule.addStop(new Stop("Station E", "09:40", "10:10")); 
-            } catch (Exception e) {
-                System.out.println("Expected Exception: " + e.getMessage());
-            }
-            /*
-            * Expected output:
-            * Warning: Unable to update schedule. New stop times conflict with an
-            existing
-            * stop.
-            */
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-        }
-
     public Schedule(String line) throws BadScheduleException, IllegalArgumentException {
-
-        if (line == null || line.isBlank()) {
-            throw new IllegalArgumentException("Input line cannot be null or empty");
-        } else {
-            String arrivalTime = null;
-            String departureTime = null;
-            String city = null;
-
-            try {
-                String[] listOfStops = line.split(",");
-
-                for (int i = 0; i < listOfStops.length; i++) {
-                    city = listOfStops[i].split(":")[0];
-                    arrivalTime = listOfStops[i].split(":")[1].split("-")[0];
-                    departureTime = listOfStops[i].split(":")[1].split("-")[1];
+        if (line == null) {
+            throw new IllegalArgumentException("Input line cannot be null");
+        }
+        
+        if (line.isBlank()) {
+            throw new IllegalArgumentException("Input line cannot be empty");
+        }
+        
+        String[] listOfStops = line.split(",");
+        
+        stops = new Stop[listOfStops.length]; // Initialize the stops array
+        int index = 0;
+        
+        for (String stop : listOfStops) {
+            int colonIndex = stop.indexOf(":");
+            if (colonIndex != -1 && colonIndex < stop.lastIndexOf(":")) {
+                String city = stop.substring(0, colonIndex).trim();
+                String timePart = stop.substring(colonIndex + 1).trim();
+        
+                int lastColonIndex = timePart.lastIndexOf(":");
+                if (lastColonIndex != -1) {
+                    String arrivalTime = timePart.substring(0, lastColonIndex - 3).trim();
+                    String departureTime = timePart.substring(lastColonIndex - 2).trim();
+        
+                    if (!Stop.isValidTime(arrivalTime) || !Stop.isValidTime(departureTime) || Stop.compareTimes(arrivalTime, departureTime) >= 0) {
+                        throw new IllegalArgumentException("Invalid time sequence: Arrival time must be before departure time at " + city);
+                    }
+        
+                    stops[index++] = new Stop(city, arrivalTime, departureTime);
+                } else {
+                    throw new IllegalArgumentException("Invalid time format: Expected format HH:mm-HH:mm");
                 }
-
-                if (!Stop.isValidTime(arrivalTime) || !Stop.isValidTime(departureTime) || Stop.compareTimes(arrivalTime, departureTime) >= 0) {
-                    throw new BadScheduleException("Invalid time sequence: Arrival time must be before departure time at " + city);
-                }
-
-            } catch (NullPointerException | ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
-                throw new IllegalArgumentException("Invalid format: Stop must include a location and times");
+            } else {
+                throw new IllegalArgumentException("Invalid stop format: Expected format 'Station A:HH:mm-HH:mm'");
             }
         }
+        
+        if (stops.length == 0) {
+            throw new IllegalArgumentException("Argument stops must contain at least one stop");
+        }
+        
+        refreshDestination();
+        
     }
 
     public Schedule(Stop[] stops) throws IllegalArgumentException {
+        if (stops == null) {
+            throw new IllegalArgumentException("Argument stops must contain at least one stop");
+        }
+
         this.stops = stops;
         this.destination = stops[stops.length - 1].getStationName();
     }
