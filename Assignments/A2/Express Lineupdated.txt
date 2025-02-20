@@ -1,0 +1,24 @@
+Train Name: Express Line
+Number of cars: 3
+Schedule: 
+Destination: Station C
+Stops: 
+1. Stop Name: Station A, Arrival: 08:00, Departure: 08:15
+2. Stop Name: Station B1, Arrival: 09:30, Departure: 09:45
+3. Stop Name: Station C, Arrival: 10:00, Departure: 10:15
+
+Car: 1
+Luggage Weight: 120
+| 01 XX |
+| XX 04 |
+
+Car: 2
+Luggage Weight: 170
+| 01 02 |
+| XX XX |
+
+Car: 3
+Luggage Weight: 120
+| 01 02 |
+| 03 04 |
+

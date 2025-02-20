@@ -155,8 +155,8 @@ public class Schedule {
     public String toString() {
         String stopsFormatted = "";
 
-        for (Stop st: stops) {
-            stopsFormatted += st.toString() + "\n";
+        for (int i = 0; i < stops.length; i++) {
+            stopsFormatted += String.valueOf(1 + i) + ". " + stops[i].toString() + "\n";
         }
 
         if (stopsFormatted.length() >= 1) {

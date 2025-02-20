@@ -34,8 +34,7 @@ public class Train {
            Car car2 = new Car(2, 80, seatingList2, layout2); // Car 2: 80kg luggage capacity
            Car car3 = new Car(3, 120, seatingList3, layout3); // Car 3: 120kg luggage capacity
            Car[] cars = { car1, car2, car3 };
-     
-           // Initialize Train object
+        
            Train train = new Train("Express Line", cars, schedule);
      
            // Print initial train details
@@ -119,7 +118,7 @@ public class Train {
            System.out.println("Error: " + e.getMessage());
         }
     }
-    
+
     public Train(String name, Schedule schedule) throws IllegalArgumentException, IOException, BadTrainException {
 
         if (name == null || name.isBlank() || schedule == null) {
@@ -181,7 +180,7 @@ public class Train {
             for (int i = 0; i < cars.length; i++) {
                 if (cars[i].canAddLuggage(luggageWeight) == true) {
                     cars[i].addLuggage(luggageWeight);
-                    System.out.println("Success: Luggage stored in car " + carPosition);
+                    System.out.println("Success: Luggage stored in car " + (i + 1));
                     return true;
                 }
             } 
@@ -272,9 +271,9 @@ public class Train {
         String fileName = this.name + "updated.txt";
 
         try (FileWriter fw = new FileWriter(fileName)) {
-            fw.write(this.toString() + "\n");
+            fw.write(this.toString() + "\n\n");
             for (Car car : cars) {
-                fw.write(car.toString() + "\n");
+                fw.write(car.toString() + "\n\n");
             }
         } catch (IOException e) {
             throw new IOException("Error writing to file: " + e.getMessage(), e);

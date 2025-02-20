@@ -69,6 +69,21 @@ public class Car {
         | 04 XX 06 |
         | 07 08 09 |
         */
+
+        String layout1 = "| O X |\n| X O |";
+        String layout2 = "| O O |\n| X X |";
+        String layout3 = "| O O |\n| O O |";
+    
+        // Define seating lists (true for occupied 'X', false for available 'O')
+        boolean[] seatingList1 = { false, true, true, false };
+        boolean[] seatingList2 = { false, false, true, true };
+        boolean[] seatingList3 = { false, false, false, false };
+    
+        // Create Car objects
+        Car car1 = new Car(1, 100, seatingList1, layout1); // Car 1: 100kg luggage capacity
+        Car car2 = new Car(2, 80, seatingList2, layout2); // Car 2: 80kg luggage capacity
+        Car car3 = new Car(3, 120, seatingList3, layout3); // Car 3: 120kg luggage capacity
+        Car[] cars = { car1, car2, car3 };
         } catch (IllegalArgumentException e) {
         System.err.println("Error initializing the car: " + e.getMessage());
         } catch (BadTrainException e) {
@@ -108,7 +123,7 @@ public class Car {
 
         // Extracting seating layout
         for (int i = 1; i < (lines.length - 1); i++) {
-            String processedLine = lines[i].replaceAll("[ |]*", "");
+            String processedLine = lines[i].replaceAll("[|\\s]", "");
             seatingListSize += processedLine.length();
 
             if (!(lines[i].startsWith("|") && lines[i].endsWith("|"))) {
@@ -149,7 +164,7 @@ public class Car {
         String[] lines = seatingLayout.split("\n");
         int seatingListSize = 0;
 
-        for (int i = 0; i < (lines.length - 1); i++) {
+        for (int i = 0; i < (lines.length); i++) {
             String processedLine = lines[i].replaceAll("[ |]*", "");
             seatingListSize += processedLine.length();
 
@@ -161,7 +176,7 @@ public class Car {
                 throw new IllegalArgumentException("Invalid format: Each seat must be either 'X' (occupied), 'O'\r\n" + //
                                         "(available), or empty space");
             }
-        } 
+        }
 
         if (seatingList.length != seatingListSize) {
             throw new IllegalArgumentException("Invalid seating list: Wrong number of elements for seatingList");
@@ -189,7 +204,7 @@ public class Car {
     }
 
     public int reserveSeat(int seatNumber, int luggageWeight) throws BadTrainException {
-        
+
         if (seatNumber < 1 || seatNumber > seatingList.length) {
             throw new BadTrainException("Invalid seat number: must be between 1 and " + seatingList.length);
         }
