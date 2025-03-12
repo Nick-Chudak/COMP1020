@@ -49,7 +49,7 @@ public class ListCars{
         }
     }
 
-    public void printEitherOr(int mileage) {
+    public void printEitherOr(int condition) {
 
         if (condition.equals("either")) {
             for (int i = 0; i < listCars.length; i++) {

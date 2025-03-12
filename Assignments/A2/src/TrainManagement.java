@@ -58,17 +58,20 @@ public class TrainManagement {
             String line;
             while ((line = br.readLine()) != null) {
                 try {
-                    String[] parts = line.split(";");
-                    if (parts.length != 2) throw new IllegalArgumentException("Invalid line format");
-
-                    String name = parts[0];
-                    String schedule = parts[1];
-
+                    String[] parts = line.split(";", 2); // Ensure only two parts are split
+                    if (parts.length != 2 || parts[0].isBlank() || parts[1].isBlank()) {
+                        System.out.println("Error processing line: empty");
+                        continue;
+                    }
+    
+                    String name = parts[0].trim();
+                    String schedule = parts[1].trim();
+    
                     Schedule trainSchedule = new Schedule(schedule);
                     Train train = new Train(name, trainSchedule);
                     addTrain(train);
                 } catch (IllegalArgumentException | BadTrainException | BadScheduleException e) {
-                    System.out.println(e.getMessage());
+                    System.out.println("Error processing line: " + e.getMessage());
                 }
             }
         } catch (IOException e) {

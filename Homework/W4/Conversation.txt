@@ -1,0 +1,5 @@
+[Person1] 2024-03-04 09:00:00 Good morning!
+[Person2] 2024-03-04 09:02:00 Morning! Yes, I slept fine, thanks for asking.
+[Person1] 2024-03-04 09:05:00 Did you sleep well?
+[Person1] 2024-03-04 09:10:00 I had a strange dream last night.
+[Person2] 2024-03-04 09:15:00 Wow, that dream sounds interesting!

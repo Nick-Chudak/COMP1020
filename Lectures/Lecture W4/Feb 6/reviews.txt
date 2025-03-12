@@ -1,0 +1,40 @@
+Inception, "Mind-blowing visual effects and a complex story!", 5
+Interstellar, "A deep and emotional sci-fi masterpiece.", 5
+Inception, "Good movie, but a bit confusing at times.", 3
+The Room, "So bad it's good. I couldn't stop laughing.", 2
+Interstellar, "Amazing visuals but too long.", 4
+The Room, "Terrible acting, but somehow entertaining.", 1
+The Matrix, "A sci-fi classic that still holds up today.", 5
+Inception, "Incredible concept, executed brilliantly.", 4
+The Matrix, "Revolutionary action scenes and deep philosophy.", 5
+The Godfather, "A masterpiece of storytelling and acting.", 5
+The Godfather, "Slow at times, but an iconic movie.", 4
+The Dark Knight, "The best superhero movie ever made.", 5
+The Dark Knight, "Joker's performance is legendary.", 5
+Titanic, "An emotional rollercoaster with stunning visuals.", 4
+Titanic, "Overrated, but still well-made.", 3
+The Room, "It's so bad, it's hilarious.", 2
+Avengers: Endgame, "A fantastic conclusion to a decade of movies.", 5
+Avengers: Endgame, "Too much fan service, but still entertaining.", 4
+Pulp Fiction, "Brilliant dialogue and storytelling.", 5
+Pulp Fiction, "Confusing at first, but amazing on rewatch.", 4
+The Shawshank Redemption, "A story of hope and resilience.", 5
+The Shawshank Redemption, "One of the best movies ever made.", 5
+Forrest Gump, "Heartwarming and emotional.", 5
+Forrest Gump, "Tom Hanks delivers an unforgettable performance.", 5
+The Lion King, "A childhood classic that never gets old.", 5
+The Lion King, "Beautiful animation and an amazing soundtrack.", 5
+Jurassic Park, "Groundbreaking visual effects and a thrilling story.", 5
+Jurassic Park, "Still as exciting as when it was first released.", 5
+The Shining, "Creepy and unsettling in the best way.", 5
+The Shining, "A slow burn horror classic.", 4
+Gladiator, "An epic historical drama with stunning battle scenes.", 5
+Gladiator, "Russell Crowe at his best.", 5
+The Social Network, "A fascinating look at the rise of Facebook.", 4
+The Social Network, "Great performances and sharp dialogue.", 4
+The Prestige, "A mind-bending story with incredible twists.", 5
+The Prestige, "Nolan at his best, keeps you guessing.", 5
+Mad Max: Fury Road, "A non-stop action spectacle.", 5
+Mad Max: Fury Road, "Visually stunning and exhilarating.", 5
+Whiplash, "Intense, gripping, and brilliantly acted.", 5
+Whiplash, "One of the best movies about ambition and drive.", 5

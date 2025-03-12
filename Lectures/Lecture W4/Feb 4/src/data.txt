@@ -1,0 +1,3 @@
+ADD 2 2
+MINUS 5 2
+POW 3 3
